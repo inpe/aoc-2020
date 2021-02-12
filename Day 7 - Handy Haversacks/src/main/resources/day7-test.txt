@@ -1,0 +1,5 @@
+bright white bags contain 1 shiny gold bag.
+muted yellow bags contain 1 shiny gold bag.
+dark orange bags contain 1 bright white, 2 muted yellow bags.
+light red bag contain 1 bright white, 2 muted yellow bags.
+mirrored chartreuse bags contain no other bags.
