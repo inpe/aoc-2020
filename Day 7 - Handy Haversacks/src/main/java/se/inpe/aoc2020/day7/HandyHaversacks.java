@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 public class HandyHaversacks {
-    Map<String, Map<String, Integer>> rules = new HashMap<>();
+    final Map<String, Map<String, Integer>> rules = new HashMap<>();
 
     public static void main(String[] args) {
         new HandyHaversacks();
@@ -20,7 +20,7 @@ public class HandyHaversacks {
         String myBagColor= "shiny gold";
 
         try (Stream<String> stream = Files.lines(Paths.get("src/main/resources/day7-HandyHaversacks.txt"))) {
-            stream.forEach(line -> addToRules(line));
+            stream.forEach(this::addToRules);
             System.out.printf("Number of bags that contain %s bag: %s%n", myBagColor, getBagsContainingColor(myBagColor).size());
             System.out.printf("Number of bags inside %s bag: %s%n", myBagColor, getNumberOfBagsInside(myBagColor));
         } catch (IOException e) {
@@ -88,7 +88,7 @@ public class HandyHaversacks {
         if (content.isEmpty()) {
             return 0;
         }
-        content.forEach((s, integer) -> count.addAndGet(integer + integer * countBagsInside(rules.get(s))));
+        content.forEach((color, numberOfBags) -> count.addAndGet(numberOfBags + numberOfBags * countBagsInside(rules.get(color))));
         return count.get();
     }
 }

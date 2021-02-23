@@ -2,7 +2,7 @@ package se.inpe.aoc2020.day8;
 
 public class ProgramCode {
     private String operation;
-    private int number;
+    private final int number;
     private int timesVisited;
 
     public static final String NOP = "nop";
