@@ -16,7 +16,7 @@ public class BinaryBoarding {
     public BinaryBoarding() {
         try (Stream<String> stream = Files.lines(Paths.get("src/main/resources/day5-BinaryBoarding.txt"))) {
             List<Integer> seats = stream
-                    .map(this::convertToBinary)
+                    .map(line -> Integer.parseInt(convertToBinaryString(line),2))
                     .sorted()
                     .collect(Collectors.toList());
 
@@ -30,12 +30,13 @@ public class BinaryBoarding {
         }
     }
 
-    private Integer convertToBinary(String line) {
+    /* Front or Back (0 or 1), Left or Right (0 or 1) */
+    private String convertToBinaryString(String line) {
         String binaryString;
         binaryString = line.replace('F', '0')
                 .replace('B', '1')
                 .replace('L', '0')
                 .replace('R', '1');
-        return Integer.parseInt(binaryString,2);
+        return binaryString;
     }
 }
